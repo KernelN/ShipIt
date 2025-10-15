@@ -107,7 +107,7 @@ namespace ShipIt.TickManaging
         {
             if (tickReady)
             {
-                timer %= timer;
+                timer %= time;
                 for (int i = 0; i < lateActions.Count; i++)
                     lateActions[i]();
             }
