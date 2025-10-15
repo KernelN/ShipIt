@@ -6,10 +6,13 @@ namespace Universal
     public class Singleton<T> : MonoBehaviour where T : Component
     {
         public static T inst { get; private set; }
+        /// <summary>
+        /// False by default.
+        /// </summary>
         internal virtual bool DoNotDestroyOnLoad => false;
         internal virtual void Awake()
         {
-            if (inst == null)
+            if (inst != null)
             {
                 Destroy(this);
                 return;
