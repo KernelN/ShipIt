@@ -123,7 +123,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -306,8 +306,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""103abfda-3599-4c28-acfc-23d2bf00c7bd"",
-                    ""path"": ""<Touchscreen>/primaryTouch/delta"",
+                    ""id"": ""da17cbe4-808c-446c-82cb-8947afe0f629"",
+                    ""path"": ""<Touchscreen>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Touch"",
@@ -372,7 +372,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""98a2ae2c-da81-42c0-83e7-c3caa33d4085"",
+                    ""id"": ""38441c8d-f874-476c-bc83-a2f7d3869519"",
                     ""path"": ""<Touchscreen>/Press"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
