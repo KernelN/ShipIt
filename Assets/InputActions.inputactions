@@ -46,7 +46,16 @@
                     "name": "Next",
                     "type": "Button",
                     "id": "b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EnableLook",
+                    "type": "Button",
+                    "id": "2f129228-dcb2-414f-9f28-4e0c96cdc013",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -198,17 +207,6 @@
                 },
                 {
                     "name": "",
-                    "id": "8c8e490b-c610-4785-884f-f04217b23ca4",
-                    "path": "<Pointer>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "3e5f5442-8668-4b27-a940-df99bad7e831",
                     "path": "<Joystick>/{Hatswitch}",
                     "interactions": "",
@@ -220,11 +218,11 @@
                 },
                 {
                     "name": "",
-                    "id": "da17cbe4-808c-446c-82cb-8947afe0f629",
-                    "path": "<Touchscreen>/delta",
+                    "id": "82e35cd9-bcf9-4c19-a419-b8dc73471eac",
+                    "path": "<Pointer>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Touch",
+                    "groups": ";Touch;Keyboard&Mouse",
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -314,6 +312,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Previous",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89340ae3-60e8-4f92-a28f-835a6307862c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Hold(duration=0.3)",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "EnableLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7d488d96-2dee-4f10-89cd-b3e136d18766",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "Hold(duration=0.3)",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "EnableLook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
