@@ -18,8 +18,10 @@ public class Ship : MonoBehaviour
 
     void Awake()
     {
-        if (!planetLine) planetLine = gameObject.AddComponent<LineRenderer>();
+        if (!planetLine) 
         {
+            planetLine = gameObject.AddComponent<LineRenderer>();
+            
             // pre set
             planetLine.positionCount = 2;
             planetLine.useWorldSpace = true;
@@ -31,6 +33,7 @@ public class Ship : MonoBehaviour
     void Start()
     {
         UpdateManager.inst.SuscribeToScaled(UpdateTime, _Update);
+        
     }
     void OnDestroy()
     {
