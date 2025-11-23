@@ -1,6 +1,7 @@
 # ShipIt
 **Ship it** is a mobile game about doing deliveries across space.
 Made by Alejandro Nicolas Insausti *(NIn)*.
+Third Party Assets credited in *ThirdPartyMentions.md*
 
 ## Design Patterns used
 ***note:** Builder Pattern was schemed, but not used.*
