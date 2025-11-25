@@ -269,7 +269,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: D:/Keystore/NIn.keystore
+  AndroidKeystoreName: E:/Keys&IDs/NIn.keystore
   AndroidKeyaliasName: ship_it
   AndroidEnableArmv9SecurityFeatures: 0
   AndroidEnableArm64MTE: 0
