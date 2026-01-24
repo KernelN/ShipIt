@@ -9,11 +9,13 @@ namespace ShipIt.Gameplay.Astral
     {
         [SerializeField] PathFinder pathFinder;
         [SerializeField] List<GameObject> highlightersPool = new List<GameObject>();
+        [SerializeField] CameraSwapper camSwapper;
+        [SerializeField] PathShower pathShower;
 
         readonly List<GameObject> activeHighlights = new List<GameObject>();
         readonly HashSet<Transform> highlightedTargets = new HashSet<Transform>();
         readonly List<Transform> selectionPath = new List<Transform>();
-
+        
         void OnEnable()
         {
             SubscribeInput();
@@ -31,12 +33,16 @@ namespace ShipIt.Gameplay.Astral
                 pathFinder.SetGrid();
             }
 
+            SubscribeInput();
+
             Transform originPlanet = AstralManager.inst ? AstralManager.inst.OriginPlanet : null;
             selectionPath.Clear();
             if (originPlanet)
             {
                 selectionPath.Add(originPlanet);
             }
+
+            ShowPath();
             HighlightPaths(originPlanet);
         }
 
@@ -52,22 +58,17 @@ namespace ShipIt.Gameplay.Astral
 
             List<Transform> targets = pathFinder.GetPaths(originPlanet);
             if (targets == null || targets.Count == 0)
-            {
                 return;
-            }
 
-            foreach (Transform target in targets)
+            for (int i = 0; i < targets.Count; i++)
             {
+                Transform target = targets[i];
                 if (!target)
-                {
                     continue;
-                }
 
                 GameObject highlighter = GetHighlighterFromPool();
                 if (!highlighter)
-                {
                     break;
-                }
 
                 Transform highlighterTransform = highlighter.transform;
                 highlighterTransform.SetParent(target);
@@ -93,10 +94,8 @@ namespace ShipIt.Gameplay.Astral
                 }
 
                 highlighter.SetActive(false);
-                if (!highlightersPool.Contains(highlighter))
-                {
+                if (!highlightersPool.Contains(highlighter)) 
                     highlightersPool.Add(highlighter);
-                }
 
                 activeHighlights.RemoveAt(i);
             }
@@ -122,9 +121,7 @@ namespace ShipIt.Gameplay.Astral
         {
             InputHolder inputs = InputHolder.inst;
             if (!inputs)
-            {
                 return;
-            }
 
             inputs.actions.UI.Click.performed += HandleClick;
         }
@@ -133,9 +130,7 @@ namespace ShipIt.Gameplay.Astral
         {
             InputHolder inputs = InputHolder.inst;
             if (!inputs)
-            {
                 return;
-            }
 
             inputs.actions.UI.Click.performed -= HandleClick;
         }
@@ -143,34 +138,23 @@ namespace ShipIt.Gameplay.Astral
         void HandleClick(InputAction.CallbackContext context)
         {
             if (highlightedTargets.Count == 0)
-            {
                 return;
-            }
 
             InputHolder inputs = InputHolder.inst;
             if (!inputs)
-            {
                 return;
-            }
 
-            Camera mainCamera = Camera.main;
-            if (!mainCamera)
-            {
+            if (!camSwapper.cam)
                 return;
-            }
 
             Vector2 screenPosition = inputs.actions.UI.Point.ReadValue<Vector2>();
-            Ray ray = mainCamera.ScreenPointToRay(screenPosition);
+            Ray ray = camSwapper.cam.ScreenPointToRay(screenPosition);
             if (!Physics.Raycast(ray, out RaycastHit hit))
-            {
                 return;
-            }
 
             Transform selectedPlanet = GetHighlightedPlanet(hit.transform);
             if (!selectedPlanet)
-            {
                 return;
-            }
 
             SelectPlanet(selectedPlanet);
         }
@@ -181,9 +165,7 @@ namespace ShipIt.Gameplay.Astral
             while (current)
             {
                 if (highlightedTargets.Contains(current))
-                {
                     return current;
-                }
 
                 current = current.parent;
             }
@@ -194,32 +176,33 @@ namespace ShipIt.Gameplay.Astral
         void SelectPlanet(Transform selectedPlanet)
         {
             if (!selectedPlanet)
-            {
                 return;
-            }
 
             if (selectionPath.Count == 0)
             {
                 selectionPath.Add(selectedPlanet);
+                ShowPath();
                 HighlightPaths(selectedPlanet);
                 return;
             }
 
             Transform currentPlanet = selectionPath[selectionPath.Count - 1];
             if (selectedPlanet == currentPlanet)
-            {
                 return;
-            }
 
             if (selectionPath.Count >= 2 && selectedPlanet == selectionPath[selectionPath.Count - 2])
             {
                 selectionPath.RemoveAt(selectionPath.Count - 1);
+                ShowPath();
                 HighlightPaths(selectedPlanet);
                 return;
             }
 
             selectionPath.Add(selectedPlanet);
+            ShowPath();
             HighlightPaths(selectedPlanet);
         }
+
+        void ShowPath() => pathShower.ShowPath(selectionPath);
     }
 }
