@@ -134,11 +134,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8918733900130159033, guid: 458bdaddd4edb7344b69a31f604dcb90, type: 3}
   m_PrefabInstance: {fileID: 2514777542900557200}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &407473825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 148565754734066535, guid: 458bdaddd4edb7344b69a31f604dcb90, type: 3}
-  m_PrefabInstance: {fileID: 2514777542900557200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1396,7 @@ MonoBehaviour:
   - {fileID: 1599395507}
   enableOnPathCompleted:
   - {fileID: 1864312832}
-  - {fileID: 407473825}
+  - {fileID: 0}
   - {fileID: 297478315}
   - {fileID: 1031065995}
 --- !u!1 &1764793354
@@ -1890,6 +1885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7844040017300132491, guid: 458bdaddd4edb7344b69a31f604dcb90, type: 3}
+      propertyPath: fuelBank
+      value: 
+      objectReference: {fileID: 7212474401619734905}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1961,7 +1960,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3860494650939545052, guid: 433b48919ec86294fa6d38b321ea11cd, type: 3}
       propertyPath: maxJumpDistance
-      value: 12
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 3860494650939545052, guid: 433b48919ec86294fa6d38b321ea11cd, type: 3}
       propertyPath: targetPlanetOutline
