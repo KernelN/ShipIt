@@ -42,7 +42,7 @@ namespace Universal.SaveData
             await LoadDataWithErrorHandling();
         }
 
-        public void SaveKeyData(Key key, object data)
+        public void SaveKeyData(Key key, string data)
         {
             if(!this.data.TryAdd(key, data))
                 this.data[key] = data;

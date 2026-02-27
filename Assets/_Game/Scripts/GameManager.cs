@@ -30,8 +30,9 @@ namespace ShipIt
         void OnCloudLoaded(CloudDataManager.Key key, Unity.Services.CloudSave.Models.Item data)
         {
             if(key != CloudDataManager.Key.GameData) return;
-
-            this.data = data.Value.GetAs<GameData>();
+            
+            string dataString = data.Value.GetAs<string>();
+            this.data = JsonUtility.FromJson<GameData>(dataString);
             SaveGameData();
         }
 
@@ -50,7 +51,8 @@ namespace ShipIt
         {
             string path = Application.persistentDataPath + DataPath;
             FileManager<GameData>.SaveDataToFile(data, path);
-            cloudDataManager.SaveKeyData(CloudDataManager.Key.GameData, data);
+            string dataString = JsonUtility.ToJson(data);
+            cloudDataManager.SaveKeyData(CloudDataManager.Key.GameData, dataString);
         }
         public void LoadGameData()
         {
