@@ -8,6 +8,7 @@ namespace ShipIt
     public class GameManager : Universal.Singleton<GameManager>
     {
         internal override bool DoNotDestroyOnLoad => true;
+        internal override bool DestroyGameObject => true;
         const string DataPath = "/Data/GameData.dat";
 
         [SerializeField] GameData data;
