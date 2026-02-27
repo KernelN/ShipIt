@@ -8360,6 +8360,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fuel Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 7341199248342988446, guid: d250cafd7eb22f34aa9984a68dac651c, type: 3}
+      propertyPath: m_fontSize
+      value: 64.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

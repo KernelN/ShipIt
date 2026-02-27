@@ -1510,7 +1510,7 @@ MonoBehaviour:
   - {fileID: 1599395507}
   enableOnPathCompleted:
   - {fileID: 1864312832}
-  - {fileID: 0}
+  - {fileID: 2514777542900557201}
   - {fileID: 297478315}
   - {fileID: 1031065995}
 --- !u!1 &1764793354
@@ -2024,6 +2024,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458bdaddd4edb7344b69a31f604dcb90, type: 3}
+--- !u!1 &2514777542900557201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1468313410820403927, guid: 458bdaddd4edb7344b69a31f604dcb90, type: 3}
+  m_PrefabInstance: {fileID: 2514777542900557200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7212474401619734904
 PrefabInstance:
   m_ObjectHideFlags: 0
