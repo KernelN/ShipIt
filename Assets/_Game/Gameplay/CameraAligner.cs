@@ -148,11 +148,6 @@ namespace ShipIt.Gameplay.Astral
 
             float orthographicSize = Mathf.Max(requiredHalfHeight, requiredHalfWidth / aspect, minimumOrthographicSize);
 
-            float offsetX = orthographicSize * aspect * 2f;
-            float offsetY = orthographicSize * 2f;
-            centerX += offsetX;
-            centerY += offsetY;
-
             targetCamera.transform.rotation = finalRotation;
             targetCamera.transform.position = (right * centerX) + (up * centerY) + (forward * cameraDepth);
             targetCamera.orthographicSize = orthographicSize;
