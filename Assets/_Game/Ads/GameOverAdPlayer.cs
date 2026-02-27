@@ -9,7 +9,7 @@ namespace ShipIt.Ads
         void Start()
         {
             Gameplay.GameplayManager.inst.OnOrderCompleted += ad.ShowAd;
-            Gameplay.GameplayManager.inst.OnOrderFailed += ad.ShowAd;
+            //Gameplay.GameplayManager.inst.OnOrderFailed += ad.ShowAd;
         }
     }
 }
