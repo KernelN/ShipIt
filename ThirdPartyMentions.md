@@ -13,4 +13,7 @@
 ### Fonts by
  - Conthrax - Typodermic Fonts 
  - Nasalization - Typodermic Fonts 
- - Space Age - Justin Callaghan 
+ - Space Age - Justin Callaghan
+ ### Music by
+ - Menu (Sonar Tuning Electro Track) - SouljahdeShiva
+ - Gameplay (Amiga Was Better) - Gobusto
