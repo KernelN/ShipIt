@@ -8,7 +8,7 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Universal.SaveData
+namespace Universal.FileManaging.Cloud
 {
     public class CloudDataManager : Singleton<CloudDataManager>
     {
