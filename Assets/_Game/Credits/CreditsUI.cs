@@ -10,8 +10,10 @@ namespace ShipIt
 
         void Start()
         {
-            if (shopManager) 
+            if (shopManager)
                 shopManager.OnCreditsChanged += HandleCreditsChanged;
+            else
+                GameManager.inst.DataLoaded += RefreshCredits;
 
             RefreshCredits();
         }
@@ -19,6 +21,8 @@ namespace ShipIt
         {
             if (shopManager)
                 shopManager.OnCreditsChanged -= HandleCreditsChanged;
+            else if (GameManager.inst.DataLoaded != null)
+                GameManager.inst.DataLoaded -= RefreshCredits;
         }
 
         void HandleCreditsChanged(int _)

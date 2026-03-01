@@ -27,6 +27,8 @@ namespace ShipIt
             idleManager = IdleManager.inst;
 
             InitializeFuel();
+            
+            gameManager.DataLoaded += InitializeFuel;
 
             if (idleManager) 
                 idleManager.OnIdleEvaluated += HandleIdleEvaluation;
@@ -40,6 +42,7 @@ namespace ShipIt
                 float ratio = RechargeTime > 0f ? Mathf.Clamp01(timer / RechargeTime) : 0f;
                 idleManager.SaveResource(FuelResourceKey, ratio);
             }
+            gameManager.DataLoaded -= InitializeFuel;
         }
 
         void Update()

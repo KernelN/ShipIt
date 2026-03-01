@@ -11,9 +11,9 @@ namespace ShipIt
         {
             string dataString;
             dataString = "Credits: " + data.credits;
-            dataString += "\n Fuel: " + data.fuel;
-            dataString += "\n Highest Level Completed: " + data.highestLevelCompleted;
-            dataString += "\n Skins Bought" + data.items.Count;
+            dataString += "\nFuel: " + data.fuel;
+            dataString += "\nHighest Level Completed: " + data.highestLevelCompleted;
+            dataString += "\nSkins Bought: " + data.items.Count;
             text.text = dataString;
         }
     }

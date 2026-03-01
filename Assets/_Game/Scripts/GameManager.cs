@@ -14,6 +14,7 @@ namespace ShipIt
         [SerializeField] GameData data;
         public GameData Data => data;
         CloudDataManager cloudDataManager;
+        public System.Action DataLoaded;
 
         internal override void Awake()
         {
@@ -26,16 +27,6 @@ namespace ShipIt
             cloudDataManager = CloudDataManager.inst;
             cloudDataManager.OnDataLoaded.AddListener(OnCloudLoaded);
         }
-
-        void OnCloudLoaded(CloudDataManager.Key key, Unity.Services.CloudSave.Models.Item data)
-        {
-            if(key != CloudDataManager.Key.GameData) return;
-            
-            string dataString = data.Value.GetAs<string>();
-            this.data = JsonUtility.FromJson<GameData>(dataString);
-            SaveGameData();
-        }
-
         internal override void OnDestroy()
         {
             if(this != inst) return;
@@ -47,6 +38,15 @@ namespace ShipIt
         }
 
         //Methods
+        void OnCloudLoaded(CloudDataManager.Key key, Unity.Services.CloudSave.Models.Item data)
+        {
+            if(key != CloudDataManager.Key.GameData) return;
+            
+            string dataString = data.Value.GetAs<string>();
+            this.data = JsonUtility.FromJson<GameData>(dataString);
+            SaveGameData();
+            DataLoaded?.Invoke();
+        }
         public void SaveGameData()
         {
             string path = Application.persistentDataPath + DataPath;

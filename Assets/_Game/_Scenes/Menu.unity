@@ -2025,7 +2025,7 @@ PrefabInstance:
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 835869311}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2048,7 +2048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: ClearSaveData
+      value: KeepLocal
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2060,7 +2060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: Universal.SaveData.CloudDataManager, Assembly-CSharp
+      value: ShipIt.CloudData.DataConflictHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2835,7 +2835,7 @@ PrefabInstance:
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 835869311}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2858,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: KeepSaveData
+      value: KeepCloud
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -2870,7 +2870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: Universal.SaveData.CloudDataManager, Assembly-CSharp
+      value: ShipIt.CloudData.DataConflictHandler, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1442753109507796963, guid: 228c4fccf1f77d347a904c8a2ffa4c6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

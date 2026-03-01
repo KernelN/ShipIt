@@ -9,17 +9,21 @@ namespace ShipIt.CloudData
         [SerializeField] GameDataShower localShower;
         [SerializeField] GameDataShower cloudShower;
         [SerializeField] GameObject dataConflictPanel;
-
+        CloudDataManager dataManager;
+        
         public void Start()
         {
-            CloudDataManager dataManager = CloudDataManager.inst;
+            dataManager = CloudDataManager.inst;
             if(!dataManager) return;
             if(!dataManager.hasDataConflict) return;
             
             dataConflictPanel.SetActive(true);
             localShower?.Show(GameManager.inst.Data);
             Item cloudData = dataManager.GetData(CloudDataManager.Key.GameData);
-            cloudShower?.Show(cloudData.Value.GetAs<GameData>());
+            string dataString = cloudData.Value.GetAs<string>();
+            cloudShower?.Show(JsonUtility.FromJson<GameData>(dataString));
         }
+        public void KeepLocal() => dataManager.ClearSaveData();
+        public void KeepCloud() => dataManager.KeepSaveData();
     }
 }

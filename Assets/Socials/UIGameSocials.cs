@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ShipIt.SocialNet
+namespace Universal.SocialNet
 {
     public class UIGameSocials : MonoBehaviour
     {
@@ -22,7 +22,6 @@ namespace ShipIt.SocialNet
 
         //Methods
         public void LogIn() => socials.LogIn();
-        public void LogInFromGoogle() => socials.LogIn(true);
         public void UnlockAchievement() => socials.UnlockAchievement(aID);
         public void UnlockAchievementFromGoogle() => socials.UnlockAchievement(aID, true);
     }

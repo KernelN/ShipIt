@@ -1,61 +1,43 @@
 using UnityEngine;
-using GooglePlayGames;
 
-namespace ShipIt.SocialNet
+namespace Universal.SocialNet
 {
-    public class GameSocials : Universal.Singleton<GameSocials>
+    public class GameSocials : Singleton<GameSocials>
     {
         internal override bool DoNotDestroyOnLoad => true;
-
+        
+        public System.Action SignedAndLinked;
+        bool isSignedIn;
+        
         string leaderboardID = "";
-#if UNITY_ANDROID || PLATFORM_ANDROID
-        public static PlayGamesPlatform platform = null;
-#endif
         
         //Unity Events
+
+
+        [SerializeField] GPManager googlePlayManager;
+
+
         void Start()
         {
-#if UNITY_EDITOR || PLATFORM_STANDALONE
-            return;
-#endif
-            
-            string gameStartedId;
-            
-#if UNITY_ANDROID || PLATFORM_ANDROID
-            if (platform == null)
-            {
-                PlayGamesPlatform.DebugLogEnabled = true;
-                platform = PlayGamesPlatform.Activate();
-                Debug.Log("GPGS - Play Games activated successfully");
-            }
-            else 
-                Debug.Log("GPGS - Play Games activation failed");
-
-            gameStartedId = GPGSIds.achievement_game_started;
-#endif
-            
-            LogIn();
-
-            
-            
-            UnlockAchievement(gameStartedId);
+            #if UNITY_ANDROID && PLATFORM_ANDROID
+                googlePlayManager.SignedIn += OnSignedIn;
+            #endif
         }
-
-        //Methods
-        public void LogIn(bool logInFromPlatform = false)
+        void OnSignedIn()
         {
-#if UNITY_EDITOR || PLATFORM_STANDALONE
-            return;
-#endif
-            if (logInFromPlatform)
-            {
-#if UNITY_ANDROID || PLATFORM_ANDROID
-                platform.Authenticate(OnGoogleLogIn);
-#endif
-            }
-            else
-                Social.localUser.Authenticate(OnUnityLogIn);
+            isSignedIn = true;
+            SignedAndLinked?.Invoke();
         }
+
+        public void LogIn()
+        {
+            if(isSignedIn) return;
+#if UNITY_ANDROID && PLATFORM_ANDROID
+            googlePlayManager.Awake();
+            googlePlayManager.Start();
+#endif
+        }
+
         public void AddScoreToLeaderboard(int score)
         {
 #if UNITY_EDITOR || PLATFORM_STANDALONE
@@ -76,10 +58,10 @@ namespace ShipIt.SocialNet
 #if UNITY_EDITOR || PLATFORM_STANDALONE
             return;
 #endif
-            if (Social.localUser.authenticated)
+            if (isSignedIn)
             {
 #if UNITY_ANDROID || PLATFORM_ANDROID
-                platform.ShowLeaderboardUI();
+                googlePlayManager.ShowLeaderboardUI();
 #endif
             }
         }
@@ -88,10 +70,10 @@ namespace ShipIt.SocialNet
 #if UNITY_EDITOR || PLATFORM_STANDALONE
             return;
 #endif
-            if (Social.localUser.authenticated)
+            if (isSignedIn)
             {
 #if UNITY_ANDROID || PLATFORM_ANDROID
-                platform.ShowAchievementsUI();
+                googlePlayManager.ShowAchievementsUI();
 #endif
             }
         }
@@ -103,7 +85,7 @@ namespace ShipIt.SocialNet
             if (unlockFromPlatform)
             {
 #if UNITY_ANDROID || PLATFORM_ANDROID
-                platform.UnlockAchievement(id);
+                googlePlayManager.UnlockAchievement(id);
 #endif
                 return;
             }
@@ -114,36 +96,5 @@ namespace ShipIt.SocialNet
                 Debug.Log("GameSocials - Failed to unlock achievement");
             
         }
-        void OnUnityLogIn(bool success)
-        {
-#if UNITY_EDITOR || PLATFORM_STANDALONE
-            return;
-#endif
-            if (success)
-            {
-                Debug.Log("GameSocials - Logged in successfully");
-                Debug.Log("GameSocials - ID: " + Social.localUser.id);
-                Debug.Log("GameSocials - Name: " + Social.localUser.userName);
-            }
-            else
-            {
-                Debug.Log("GameSocials - Failed to login");
-            }
-        }
-#if UNITY_ANDROID || PLATFORM_ANDROID
-        void OnGoogleLogIn(GooglePlayGames.BasicApi.SignInStatus signInStatus)
-        {
-            if (signInStatus == GooglePlayGames.BasicApi.SignInStatus.Success)
-            {
-                Debug.Log("GPGS - Logged in successfully");
-                Debug.Log("GPGS - ID: " + platform.localUser.id);
-                Debug.Log("GPGS - Name: " + platform.localUser.userName);
-            }
-            else
-            {
-                Debug.Log("GPGS - Failed to login: " + signInStatus);
-            }
-        }
-#endif
     }
 }
